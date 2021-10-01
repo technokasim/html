@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Login to your byzbyz account.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel='stylesheet' href='https://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css'>
+  <link rel="stylesheet" href="./login.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="wrapper">
+  <form class="form-signin">
+    <h2 class="form-signin-heading">Register</h2>
+
+    <div class="inner-addon left-addon">
+      <label class="control-label">Email Id</label>
+        <i class="glyphicon glyphicon-envelope"></i>
+        <input type="text" class="form-control" name="site" placeholder="Email Id" required="" autofocus=""/>
+    </div>
+    <div class="inner-addon left-addon mt-5" >
+        <label class="control-label">Username</label>
+          <i class="glyphicon glyphicon-user"></i>
+          <input type="text" class="form-control" name="site" placeholder="Username" required="" autofocus=""/>
+      </div>
+    <div class="inner-addon left-addon">
+       <label class="control-label">Password</label>
+        <i class="glyphicon glyphicon-lock"></i>
+        <input type="password" class="form-control" name="password" placeholder="*******" required="" autofocus=""/>
+    </div>
+     <label class="clickwrap">
+        <input type="checkbox" id="accept" onchange="update()" checked> &nbsp; I agree to the <a href="/terms-and-conditions">Terms & Conditions</a>
+      </label> 
+    <button class="btn btn-lg btn-success btn-block" id="submit" onclick="submit()"  type="submit">Create Account</button>
+  </form>
+  <p class="account-signup">Already Registered?  &nbsp; <a href="./login"><button type="button" class="btn btn-primary">Login</button> </a> 
+</div>
+</body>
+
+<script>
+    function update() {
+  let {accept} = getFormValues()
+  let isFormComplete = accept
+  document.getElementById("submit").disabled = !isFormComplete
+}
+
+function getValue(id) {
+  let element = document.getElementById(id);
+  return element.type == "checkbox" ? element.checked : element.value.trim();
+}
+
+function getFormValues() {
+  let accept = getValue("accept");
+  return {accept};
+}
+
+function submit() {
+  alert(JSON.stringify(getFormValues()))
+}
+</script>
+</html>
